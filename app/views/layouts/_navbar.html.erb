@@ -1,15 +1,29 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<!-- IMPORTANT : REPLACE nil IN link_to WITH ACTUAL PATHS -->
+
+<nav class="navbar is-fixed-top is-dark" role="navigation" aria-label="main navigation">
 <!-- left side -->
-  <div class="navbar-brand">
-    <!-- navbar logo -->
-    <%= link_to href: 'https://bulma.io', class: 'navbar-item' do %>
-        <%= image_tag 'https://bulma.io/images/bulma-logo.png', width: 112, height: 28, alt: 'example tag' %>
-    <% end %>
-    <!-- navbar burger -->
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
+    <div class="navbar-brand">
+        <!-- navbar logo -->
+        <%= link_to nil, class: 'navbar-item' do %>
+            <%= image_tag 'https://bulma.io/images/bulma-logo.png', width: 112, height: 28, alt: 'example tag' %>
+        <% end %>
+        <!-- navbar burger -->
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+<!-- right side -->
+    <div class="navbar-menu">
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <%= link_to "Sign Up", nil, class: "button is-primary" %>
+                    <%= link_to "Log In", nil, class: "button is-light" %>
+                </div>
+            </div>
+        </div>
+    </div>
 </nav>
