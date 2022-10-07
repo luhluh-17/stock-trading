@@ -9,8 +9,16 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+
   <body class="has-navbar-fixed-top">
     <%=render 'layouts/navbar' %>
+    
+    <% if notice %>
+      <%= render "layouts/notice" %>
+    <% elsif alert %>
+      <%= render "layouts/alert" %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
