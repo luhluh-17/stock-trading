@@ -1,6 +1,8 @@
 <h2>landing page</h2>
 
 <% if current_user %>
-    <p>Hello, <% current_user.name %>!</p>
-    <p>This is a placeholder to signify that you have logged in.</p>
+    <p>Hello, <% current_user.email %>!</p>
+    <p>This is a placeholder to signify that you have logged in.</p>\
+<% else %>
+    <p>This is a placeholder to signify that you are not logged in.</p>
 <% end %>
