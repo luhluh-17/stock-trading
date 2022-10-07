@@ -1,5 +1,6 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation">
+  <div id="error_explanation" class="notification is-warning is-light">
+    <button class="delete" onclick="this.parentElement.style.display='none'"></button>
     <h2>
       <%= I18n.t("errors.messages.not_saved",
                  count: resource.errors.count,
