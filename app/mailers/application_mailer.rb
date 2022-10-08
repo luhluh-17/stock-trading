@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "admin@stockd.com"
+  default from: "notif@stockd.com"
   layout "mailer"
 end
