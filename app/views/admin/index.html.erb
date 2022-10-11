@@ -1,4 +1,5 @@
 <% @users.each do |user| %>
-  <%= user.first_name %><br/>
-  <%= user.email %><br/>
+  <strong>Name:</strong> <%= user.first_name %> <%= user.last_name %><br/>
+  <strong>Email:</strong> <%= user.email %><br/>
+  <strong>Verified:</strong> <%= user.is_verified %><br/>
 <% end %>
