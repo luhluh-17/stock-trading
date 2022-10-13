@@ -5,10 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # define default role for new records
-  enum role: [:user, :admin]
-  after_initialize :set_default_role, :if => :new_record?
-  
+  enum role: %i[user admin]
+  after_initialize :set_default_role, if: :new_record?
+
   def set_default_role
     self.role ||= user
   end
+
+  has_many :stocks
 end
