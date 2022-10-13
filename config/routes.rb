@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'stocks/index'
   root 'pages#landing'
 
   devise_for :users
