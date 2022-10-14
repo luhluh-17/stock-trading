@@ -13,4 +13,5 @@ Rails.application.routes.draw do
 
   get '/pending' => 'admin#pending', as: :pending
 
+  get '/dashboard', to: 'dashboard#index'
 end

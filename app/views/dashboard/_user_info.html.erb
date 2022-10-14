@@ -1,0 +1,12 @@
+<div class="dashboard-user-container">
+  <div class="avatar avatar-1"></div>
+  <div class="dashboard-user-info">
+    <p class="dashboard-subtitle"> <%= current_user.email %> </p>
+    <p>
+      <span class="dashboard-title">current_user.username</span>
+      <span class="dashboard-verified">
+        <%= display_access_level(current_user.is_verified) %>
+      </span>
+    </p>
+  </div>
+</div>
