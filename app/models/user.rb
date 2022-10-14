@@ -13,6 +13,5 @@ class User < ApplicationRecord
   end
 
   # statuses
-  validates :status, presence: true
   STATUSES = [:pending, :verified, :rejected]
 end
