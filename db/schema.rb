@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_14_023814) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_14_120651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "products", force: :cascade do |t|
-    t.string "ticker"
+    t.string "symbol"
     t.float "amount"
     t.integer "percentage"
     t.bigint "user_id", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_14_023814) do
   end
 
   create_table "stocks", force: :cascade do |t|
-    t.string "ticker"
+    t.string "symbol"
     t.float "amount"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
