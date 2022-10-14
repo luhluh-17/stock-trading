@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'transactions/index'
   root 'pages#landing'
   devise_for :users
 
@@ -6,4 +7,5 @@ Rails.application.routes.draw do
 
   resources :stocks
   resources :products
+  resources :transactions
 end
