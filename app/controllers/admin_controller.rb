@@ -3,15 +3,15 @@ class AdminController < ApplicationController
   before_action :restrict_action
 
   def index
-    @users = User.all.order('is_verified')
+    @users = User.all.order('status')
   end
 
   def pending
-    @users = User.all.where(:role => 0, :is_verified => false)
+    @users = User.all.where(:role => 0, :status => "pending")
   end
 
   def verified
-    @users = User.all.where(:role => 0, :is_verified => true)
+    @users = User.all.where(:role => 0, :status => "verified")
   end
 
   def show
@@ -20,7 +20,7 @@ class AdminController < ApplicationController
 
   def change_status
     @user = User.find(params[:id])
-    @user.toggle(:is_verified)
+
     redirect_to root_path
   end
 
@@ -31,6 +31,6 @@ class AdminController < ApplicationController
   end
 
   def user_params
-      params.require(:user).permit(:email, :name, :password, :is_verified, :balance)
+      params.require(:user).permit(:email, :name, :password, :status, :balance)
   end
 end

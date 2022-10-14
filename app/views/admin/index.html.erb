@@ -1,5 +1,7 @@
-<% @users.each do |user| %>
+<h1>All Users:</h1>
+<br/>
+<% @users.where(:role => 0).each do |user| %>
   <strong>Name:</strong> <%= user.first_name %> <%= user.last_name %><br/>
   <strong>Email:</strong> <%= user.email %><br/>
-  <strong>Verified:</strong> <%= user.is_verified %><br/>
+  <strong>Status:</strong> <%= user.status %><br/><br/>
 <% end %>
