@@ -14,7 +14,7 @@ class StocksController < ApplicationController
 
   def create
     @stock = Stock.new(stock_params)
-    @stock = current_user.id
+    @stock.user_id = current_user.id
 
     if @stock.save
       redirect_to @stock, notice: "#{@stock.ticker} has been added to your portfolio"
