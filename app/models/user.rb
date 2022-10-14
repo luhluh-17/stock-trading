@@ -13,6 +13,6 @@ class User < ApplicationRecord
   end
 
   has_many :stocks
-  has_many :products
-  has_many :transactions, through: :products
+  has_many :transactions
+  has_many :products, through: :transactions
 end
