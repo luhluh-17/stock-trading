@@ -14,10 +14,14 @@ class AdminController < ApplicationController
     @users = User.all.where(:role => 0, :is_verified => true)
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def change_status
     @user = User.find(params[:id])
-    @user.update(is_verified: params[:is_verified])
-    redirect_to params[:path]
+    @user.toggle(:is_verified)
+    redirect_to root_path
   end
 
   private
