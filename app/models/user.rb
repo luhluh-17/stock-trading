@@ -14,5 +14,5 @@ class User < ApplicationRecord
 
   has_many :stocks
   has_many :products
-  has_many :products, through: :transactions
+  has_many :transactions, through: :products
 end
