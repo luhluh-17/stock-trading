@@ -13,4 +13,5 @@ class User < ApplicationRecord
   end
 
   has_many :stocks
+  has_many :products
 end
