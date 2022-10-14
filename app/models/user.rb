@@ -11,4 +11,8 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= user
   end
+
+  # statuses
+  validates :status, presence: true
+  STATUSES = [:pending, :verified, :rejected]
 end
