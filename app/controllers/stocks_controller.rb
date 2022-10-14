@@ -1,6 +1,5 @@
 class StocksController < ApplicationController
-  before_action :set_stock,
-                only: %i[show edit update destroy]
+  before_action :set_stock, only: %i[show edit update destroy]
 
   def index
     @stocks = Stock.all
