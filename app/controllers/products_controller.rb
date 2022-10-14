@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
 
   def index
-    @products = Product.all
+    @products = current_user.role == 1 ? Product.all : current_user.products
   end
 
   def show; end
