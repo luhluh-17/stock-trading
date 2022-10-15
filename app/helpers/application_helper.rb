@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def display_access_level(is_verified)
-    return 'Trader' if is_verified
+  def display_access_level(status)
+    return 'Trader' if status == 'verified'
 
     'Buyer'
   end
