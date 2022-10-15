@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # admin
-  resources :admin do 
+  resources :admin do
     member do
       patch :update_status
     end
@@ -20,4 +20,8 @@ Rails.application.routes.draw do
 
   # dashboard
   get '/dashboard', to: 'dashboard#index'
+
+  resources :stocks
+  resources :products
+  resources :transactions
 end
