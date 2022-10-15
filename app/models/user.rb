@@ -11,6 +11,11 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= user
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   # statuses
   STATUSES = %i[pending verified rejected]
   has_many :stocks

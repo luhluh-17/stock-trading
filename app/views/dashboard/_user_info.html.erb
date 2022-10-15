@@ -3,9 +3,9 @@
   <div class="dashboard-user-info">
     <p class="dashboard-subtitle"> <%= current_user.email %> </p>
     <p>
-      <span class="dashboard-title">current_user.username</span>
+      <span class="dashboard-title"> <%= current_user.full_name %></span>
       <span class="dashboard-verified">
-        <%= display_access_level(current_user.is_verified) %>
+        <%= display_access_level(current_user.status) %>
       </span>
     </p>
   </div>
