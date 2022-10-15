@@ -96,3 +96,7 @@
   background: url('avatars/01.png');
   background-size: contain;
 }
+
+.stock-logo {
+  width: 2rem;
+}
