@@ -1,2 +1,32 @@
-<h1>Transactions#index</h1>
-<p>Find me in app/views/transactions/index.html.erb</p>
+<section id="products">
+  <table class="table table is-striped table is-hoverable table is-fullwidth">
+    <tr>
+      <th>Ref. #</th>
+      <% if current_user.role == "admin" %>
+        <th>Buyer</th>
+      <% end %>
+      <th>Logo</th>
+      <th>Symbol</th>
+      <th>Company</th>
+      <th>Price</th>
+      <th>Amount</th>
+      <th>Seller</th>
+    </tr>
+    <% @transactions.each do |trx| %>
+      <% quote = @client.quote(trx.product.symbol) %>
+      <% logo = @client.logo(trx.product.symbol).url %>
+      <tr>
+        <td> <%= trx.created_at.to_i %></td>
+        <% if current_user.role == "admin" %>
+          <td> <%= trx.user.full_name %></td>
+        <% end %>
+        <td><img class="stock-logo" src=<%= logo %>></td>
+        <td><%= trx.product.symbol %></td>
+        <td><%= quote.company_name %></td>
+        <td> <%= number_to_currency(trx.price) %></td>
+        <td><%= trx.amount %></td>
+        <td> <%= trx.product.user.full_name %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
