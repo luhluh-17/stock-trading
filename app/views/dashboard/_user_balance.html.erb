@@ -4,7 +4,7 @@
       <span class="dashboard-subtitle">Estimated Balance</span>
     </p>
     <p class="dashboard-title">
-      ≈ <%= number_to_currency(current_user.balance) %>
+      <%= "≈ #{number_to_currency(current_user.balance)}" %>
     </p>
   </div>
 </div>

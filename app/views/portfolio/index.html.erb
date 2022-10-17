@@ -21,7 +21,7 @@
         <td><%= stock.amount %></td>
         <td><%= number_to_currency(quote.latest_price) %></td>
         <td><%= number_to_percentage(quote.change_percent) %></td>
-        <td> ≈ <%= number_to_currency(est_price) %></td>
+        <td><%= "≈ #{number_to_currency(est_price)}" %></td>
         <td><button>Sell</button></td>
       </tr>
     <% end %>
