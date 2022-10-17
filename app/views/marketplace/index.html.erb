@@ -1,0 +1,22 @@
+<section id="products">
+  <table class="table table is-striped table is-hoverable table is-fullwidth">
+    <tr>
+      <th>Symbol</th>
+      <th>Price</th>
+      <th>Available</th>
+      <th>Seller</th>
+      <th></th>
+    </tr>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.symbol %></td>
+        <td>
+          <%= product_price(@client.quote(product.symbol).latest_price, product.percentage) %>
+        </td>
+        <td><%= product.amount %></td>
+        <td><%= product.user.full_name  %></td>
+        <td><button>Buy</button></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
