@@ -23,9 +23,9 @@
         <td><img class="stock-logo" src=<%= logo %>></td>
         <td><%= trx.product.symbol %></td>
         <td><%= quote.company_name %></td>
-        <td> <%= number_to_currency(trx.price) %></td>
+        <td><%= number_to_currency(trx.price) %></td>
         <td><%= trx.amount %></td>
-        <td> <%= trx.product.user.full_name %></td>
+        <td><%= trx.product.user.full_name %></td>
       </tr>
     <% end %>
   </table>
