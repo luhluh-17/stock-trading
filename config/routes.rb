@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index'
 
   get 'marketplace', to: 'marketplace#index'
+  get 'portfolio', to: 'portfolio#index'
 
   resources :stocks
   resources :products

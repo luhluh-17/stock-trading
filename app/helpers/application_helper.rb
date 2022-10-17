@@ -4,4 +4,8 @@ module ApplicationHelper
 
     'Buyer'
   end
+
+  def calculate_stock_price(amount, price)
+    amount * price
+  end
 end
