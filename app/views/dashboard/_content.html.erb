@@ -8,10 +8,9 @@
       <th>24H Change</th>
     </tr>
     <% @stocks_lists.each do |model| %>
+      <%= logo = @client.logo(model.symbol).url %>
       <tr>
-        <td>
-          <img class="stock-logo" src=<%= @client.logo(model.symbol).url %>>
-        </td>
+        <td><img class="stock-logo" src=<%= logo %>></td>
         <td><%= model.symbol %></td>
         <td><%= model.company_name %></td>
         <td><%= number_to_currency(model.latest_price)  %></td>
