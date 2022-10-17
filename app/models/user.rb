@@ -20,5 +20,5 @@ class User < ApplicationRecord
   STATUSES = %i[pending verified rejected]
   has_many :stocks
   has_many :transactions
-  has_many :products, through: :transactions
+  has_many :products
 end

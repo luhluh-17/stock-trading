@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   root 'pages#landing'
 
   # dashboard
-  get '/dashboard', to: 'dashboard#index'
+  get 'dashboard', to: 'dashboard#index'
+
+  get 'marketplace', to: 'marketplace#index'
 
   resources :stocks
   resources :products
