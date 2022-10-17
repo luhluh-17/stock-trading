@@ -11,7 +11,7 @@
       <tr>
         <td><%= product.symbol %></td>
         <td>
-          <%= product_price(@client.quote(product.symbol).latest_price, product.percentage) %>
+          <%= number_to_currency(product_price(@client.quote(product.symbol).latest_price, product.percentage)) %>
         </td>
         <td><%= product.amount %></td>
         <td><%= product.user.full_name  %></td>
