@@ -2,7 +2,7 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[show edit update destroy]
 
   def index
-    @transactions = current_user.role == 1 ? Transaction.all : current_user.transactions
+    @transactions = current_user.role == 'admin' ? Transaction.all : current_user.transactions
   end
 
   def show; end
