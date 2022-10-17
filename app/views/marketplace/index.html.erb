@@ -1,20 +1,25 @@
 <section id="products">
   <table class="table table is-striped table is-hoverable table is-fullwidth">
     <tr>
+      <th>Logo</th>
       <th>Symbol</th>
+      <th>Company</th>
       <th>Price</th>
-      <th>Available</th>
+      <th>Amount</th>
       <th>Seller</th>
       <th></th>
     </tr>
     <% @products.each do |product| %>
+      <% quote = @client.quote(product.symbol) %>
+      <% logo = @client.logo(product.symbol).url %>
+      <% sell_price = product_price(quote.latest_price, product.percentage) %>
       <tr>
+        <td><img class="stock-logo" src=<%= logo %>></td>
         <td><%= product.symbol %></td>
-        <td>
-          <%= number_to_currency(product_price(@client.quote(product.symbol).latest_price, product.percentage)) %>
-        </td>
+        <td><%= quote.company_name %></td>
+        <td> <%= number_to_currency(sell_price) %></td>
         <td><%= product.amount %></td>
-        <td><%= product.user.full_name  %></td>
+        <td> <%= product.user.full_name %></td>
         <td><button>Buy</button></td>
       </tr>
     <% end %>

@@ -13,28 +13,15 @@
     <% @stocks.each do |stock| %>
       <% quote = @client.quote(stock.symbol) %>
       <% logo = @client.logo(stock.symbol).url %>
+      <% est_price = calculate_stock_price(stock.amount, quote.latest_price) %>
       <tr>
-        <td>
-          <img class="stock-logo" src=<%= logo %>>
-        </td>
-        <td>
-          <%= stock.symbol %>
-        </td>
-        <td>
-          <%= quote.company_name %>
-        </td>
-        <td>
-          <%= stock.amount %>
-        </td>
-        <td>
-          <%= number_to_currency(quote.latest_price) %>
-        </td>
-        <td>
-          <%= number_to_percentage(quote.change_percent) %>
-        </td>
-        <td>
-          ≈ <%= number_to_currency(calculate_stock_price(stock.amount, quote.latest_price)) %>
-        </td>
+        <td><img class="stock-logo" src=<%= logo %>></td>
+        <td> <%= stock.symbol %></td>
+        <td><%= quote.company_name %></td>
+        <td><%= stock.amount %></td>
+        <td><%= number_to_currency(quote.latest_price) %></td>
+        <td><%= number_to_percentage(quote.change_percent) %></td>
+        <td> ≈ <%= number_to_currency(est_price) %></td>
         <td><button>Sell</button></td>
       </tr>
     <% end %>
