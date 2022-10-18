@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   end
 
   get '/pending' => 'admin#pending', as: :pending
-  get '/users' => 'admin#index', as: :users
+  get '/userlist' => 'admin#index', as: :userlist
+  get '/userlist/:id' => 'admin#show', as: :show
 
   # devise
   devise_for :users, controllers: {
