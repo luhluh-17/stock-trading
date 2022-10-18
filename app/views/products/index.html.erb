@@ -7,6 +7,7 @@
       <th>Percentage</th>
       <th>Amount</th>
       <th>Latest Price</th>
+      <th>Sell Price</th>
       <th>Total Price</th>
       <th></th>
     </tr>
@@ -22,6 +23,7 @@
         <td><%= product.amount %></td>
         <td> <%= number_to_currency(quote.latest_price) %></td>
         <td> <%= number_to_currency(sell_price) %></td>
+        <td> <%= number_to_currency(sell_price*product.amount) %></td>
         <td>
           <button>Edit</button>
           <button>Withdraw</button>
