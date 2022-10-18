@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   get 'marketplace', to: 'marketplace#index'
   get 'portfolio', to: 'portfolio#index'
+  get 'profile', to: 'profile#index'
+  get 'profile/deposit', to: 'profile#deposit'
 
   resources :stocks
   resources :products

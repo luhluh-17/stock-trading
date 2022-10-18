@@ -1,0 +1,5 @@
+<%= render "shared/user_profile_cover" %>
+<%= text_field_tag "payment_amount", 1000 %>
+<br>
+<%# TODO: change amount to get data from textfield %>
+<%= link_to 'Deposit', profile_deposit_path(:user => { amount: 1000}) %>
