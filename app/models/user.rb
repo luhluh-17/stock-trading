@@ -4,16 +4,17 @@ class User < ApplicationRecord
   devise :confirmable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # full name
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   # define default role for new records
   enum role: %i[user admin]
   after_initialize :set_default_role, if: :new_record?
 
   def set_default_role
     self.role ||= user
-  end
-
-  def full_name
-    "#{first_name} #{last_name}"
   end
 
   # statuses

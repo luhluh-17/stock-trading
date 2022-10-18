@@ -6,7 +6,7 @@
     </div>
 
     <div>
-      <button>Add User</button>
+      <%= link_to "Add User", new_user_registration_path %>
     </div>
   </div>
 
@@ -19,7 +19,7 @@
     </tr>
     <% @users.where(:role => 0).each do |user| %>
       <tr>
-        <td><%= user.first_name %> <%= user.last_name %></td>
+        <td><%=link_to user.full_name, show_path(user.id) %></td>
         <td><%= user.email %></td>
         <td><%= user.status.upcase_first %></td>
         <td><button>Edit</button></td>
