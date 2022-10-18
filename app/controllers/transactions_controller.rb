@@ -19,9 +19,14 @@ class TransactionsController < ApplicationController
       new_price = @transaction.price * @transaction.amount
       @transaction.update(price: new_price)
 
-      # Update User
+      # Subtract Buyer Balance
       new_balance = (current_user.balance - @transaction.price).round(2)
       current_user.update(balance: new_balance)
+
+      # Add Seller Balance
+      seller = @transaction.product.user
+      new_balance = (seller.balance + @transaction.price).round(2)
+      seller.update(balance: new_balance)
 
       # Subtract Amount in Product
       product = @transaction.product
