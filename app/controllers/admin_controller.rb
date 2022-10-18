@@ -29,7 +29,7 @@ class AdminController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to userlist_path
+      redirect_to userlist_path, notice: 'User successfully created.' 
     else
       render :new, status: :unprocessable_entity
     end
@@ -44,17 +44,25 @@ class AdminController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to userlist_path
+      redirect_to userlist_path, notice: 'User details successfully updated.' 
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  # delete user
+  def destroy
+    @user = Article.find(params[:id])
+    @user.destroy
+
+    redirect_to userlist_path, notice: 'User successfully deleted.', status: :see_other
   end
 
   # change pending to verified / rejected
   def update_status
     @user = User.find(params[:id])
     @user.update(status: params[:status])
-    redirect_to admin_path, notice: "Status changed to #{@user.status}"
+    redirect_to admin_path, notice: "Status changed to #{@user.status}."
   end
 
   private
