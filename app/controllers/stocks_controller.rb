@@ -13,16 +13,24 @@ class StocksController < ApplicationController
 
   # TODO: Fixed Warning
   def create
-    @stock = Stock.new(stock_params)
-    @stock.user_id = current_user.id
+    symbol = params[:stock][:symbol]
+    stock = current_user.stocks.find_by(symbol:)
+    if stock.nil?
+      @stock = Stock.new(stock_params)
+      @stock.user_id = current_user.id
 
-    if @stock.save
-      new_balance = (current_user.balance - (params[:stock][:latest].to_f * @stock.amount)).round(2)
-      current_user.update(balance: new_balance)
+      if @stock.save
+        new_balance = (current_user.balance - (params[:stock][:latest].to_f * @stock.amount)).round(2)
+        current_user.update(balance: new_balance)
 
-      redirect_to portfolio_path, notice: "#{@stock.symbol} has been added to your portfolio"
+        redirect_to portfolio_path, notice: "#{@stock.symbol} has been added to your portfolio"
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
-      render :new, status: :unprocessable_entity
+      new_amount = (stock.amount + params[:stock][:amount].to_f).round(2)
+      stock.update(amount: new_amount)
+      redirect_to portfolio_path, notice: "#{new_amount} has been added to your #{stock.symbol} portfolio"
     end
   end
 
