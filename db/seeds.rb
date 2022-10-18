@@ -55,11 +55,12 @@ Stock.create(symbol: 'ZYME', amount: 1000, user_id: User.first.id)
 Stock.create(symbol: 'WFC', amount: 1000, user_id: User.first.id)
 
 # Create second user to popolate P2P Transaction
-Transaction.create(user_id: User.second.id, product_id: Product.first.id, price: 397.84, amount: 13.5)
-Transaction.create(user_id: User.second.id, product_id: Product.second.id, price: 147.60, amount: 8.2)
-Transaction.create(user_id: User.second.id, product_id: Product.third.id, price: 428.97, amount: 3.1)
+# Transaction.create(user_id: User.second.id, product_id: Product.first.id, price: 397.84, amount: 13.5)
+# Transaction.create(user_id: User.second.id, product_id: Product.second.id, price: 147.60, amount: 8.2)
+# Transaction.create(user_id: User.second.id, product_id: Product.third.id, price: 428.97, amount: 3.1)
 
 # Second user portfolio
 Stock.create(symbol: 'SGML', amount: 1000, user_id: User.second.id)
 Stock.create(symbol: 'MTR', amount: 1000, user_id: User.second.id)
 Stock.create(symbol: 'AAPL', amount: 1000, user_id: User.second.id)
+
