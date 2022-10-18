@@ -6,7 +6,9 @@
       <th>Company</th>
       <th>Price</th>
       <th>24H Change</th>
+      <th></th>
     </tr>
+    <%= render 'default' %>
     <% @stocks_lists.each do |model| %>
       <% logo = @client.logo(model.symbol).url %>
       <tr>
@@ -15,6 +17,7 @@
         <td><%= model.company_name %></td>
         <td><%= number_to_currency(model.latest_price)  %></td>
         <td><%= number_to_percentage(model.change_percent) %></td>
+        <th><%= link_to 'Buy', new_stock_path(:stock => { symbol: model.symbol, latest: model.latest_price}) %></th>
       </tr>
     <% end %>
   </table>
