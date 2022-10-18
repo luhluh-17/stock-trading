@@ -9,7 +9,6 @@ class StocksController < ApplicationController
 
   def new
     @stock = Stock.new
-    @balance = current_user.balance
   end
 
   # TODO: Fixed Warning
