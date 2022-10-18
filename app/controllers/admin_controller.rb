@@ -18,6 +18,20 @@ class AdminController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      redirect_to userlist_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def update_status
     @user = User.find(params[:id])
     @user.update(status: params[:status])
@@ -26,15 +40,11 @@ class AdminController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.find(params[:id])
-  end
-
   def restrict_action
     redirect_to root_path unless current_user.admin? 
   end
 
   def user_params
-      params.require(:user).permit(:email, :password, :status, :balance)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :status, :balance)
   end
 end
