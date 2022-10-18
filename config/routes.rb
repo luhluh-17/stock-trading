@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/pending' => 'admin#pending', as: :pending
   get '/userlist' => 'admin#index', as: :userlist
   get '/userlist/:id' => 'admin#show', as: :show
+  get '/userlist/:id/edit' => 'admin#edit', as: :edit
   get '/newuser' => 'admin#new', as: :new
 
   # devise
