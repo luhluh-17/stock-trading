@@ -14,9 +14,32 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
     @transaction.user_id = current_user.id
-
     if @transaction.save
-      redirect_to @transaction, notice: 'Transaction successfull'
+      # Update Paid Price
+      new_price = @transaction.price * @transaction.amount
+      @transaction.update(price: new_price)
+
+      # Update User
+      new_balance = (current_user.balance - @transaction.price).round(2)
+      current_user.update(balance: new_balance)
+
+      # Subtract Amount in Product
+      product = @transaction.product
+      new_amount = (product.amount - @transaction.amount).round(2)
+      product.update(amount: new_amount)
+
+      # Add Stock in Portfolio
+      symbol = @transaction.product.symbol
+      stock = current_user.stocks.find_by(symbol:)
+
+      if stock.nil?
+        Stock.create(symbol:, amount: @transaction.amount, user_id: current_user.id)
+      else
+        new_amount = (stock.amount + @transaction.amount).round(2)
+        stock.update(amount: new_amount)
+      end
+
+      redirect_to transactions_path, notice: 'Transaction successfull'
     else
       render :new, status: :unprocessable_entity
     end
