@@ -17,9 +17,10 @@ class StocksController < ApplicationController
     @stock.user_id = current_user.id
 
     if @stock.save
-      redirect_to portfolio_path, notice: "#{@stock.symbol} has been added to your portfolio"
-      new_balance = current_user.balance - (params[:stock][:latest].to_f * @stock.amount)
+      new_balance = (current_user.balance - (params[:stock][:latest].to_f * @stock.amount)).round(2)
       current_user.update(balance: new_balance)
+
+      redirect_to portfolio_path, notice: "#{@stock.symbol} has been added to your portfolio"
     else
       render :new, status: :unprocessable_entity
     end
