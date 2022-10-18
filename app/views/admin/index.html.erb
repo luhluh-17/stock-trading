@@ -22,7 +22,7 @@
         <td><%=link_to user.full_name, show_path(user.id) %></td>
         <td><%= user.email %></td>
         <td><%= user.status.upcase_first %></td>
-        <td><button>Edit</button></td>
+        <td><%=link_to "Edit", edit_path(user.id) %></td>
       </tr>
     <% end %>
   </table>

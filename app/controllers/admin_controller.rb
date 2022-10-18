@@ -2,6 +2,7 @@ class AdminController < ApplicationController
   before_action :authenticate_user!
   before_action :restrict_action
 
+  # user lists
   def index
     @users = User.all.order('status')
   end
@@ -14,10 +15,12 @@ class AdminController < ApplicationController
     @users = User.all.where(:role => 0, :status => "verified")
   end
 
+  # show user details
   def show
     @user = User.find(params[:id])
   end
 
+  # add user
   def new
     @user = User.new
   end
@@ -32,6 +35,22 @@ class AdminController < ApplicationController
     end
   end
 
+  # edit user
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      redirect_to userlist_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  # change pending to verified / rejected
   def update_status
     @user = User.find(params[:id])
     @user.update(status: params[:status])
