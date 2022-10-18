@@ -1,7 +1,6 @@
 <section id="transactions">
   <table class="table table is-striped table is-hoverable table is-fullwidth">
     <tr>
-      <th>Ref. #</th>
       <% if current_user.role == "admin" %>
         <th>Buyer</th>
       <% end %>
@@ -11,12 +10,12 @@
       <th>Price</th>
       <th>Amount</th>
       <th>Seller</th>
+      <th>Ref. #</th>
     </tr>
     <% @transactions.each do |trx| %>
       <% quote = @client.quote(trx.product.symbol) %>
       <% logo = @client.logo(trx.product.symbol).url %>
       <tr>
-        <td> <%= trx.created_at.to_i %></td>
         <% if current_user.role == "admin" %>
           <td> <%= trx.user.full_name %></td>
         <% end %>
@@ -26,6 +25,7 @@
         <td><%= number_to_currency(trx.price) %></td>
         <td><%= trx.amount %></td>
         <td><%= trx.product.user.full_name %></td>
+        <td> <%= trx.created_at.to_i %></td>
       </tr>
     <% end %>
   </table>
