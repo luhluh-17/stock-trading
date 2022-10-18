@@ -1,0 +1,11 @@
+<% default_data = "SGML" %>
+<% quote = @client.quote(default_data) %>
+<% logo = @client.logo(default_data).url %>
+<tr>
+  <td><img class="stock-logo" src=<%= logo %>></td>
+  <td><%= default_data %></td>
+  <td><%= quote.company_name %></td>
+  <td><%= number_to_currency(quote.latest_price)  %></td>
+  <td><%= number_to_percentage(quote.change_percent) %></td>
+  <td><%= link_to 'Buy', new_stock_path(:stock => { symbol: default_data, latest: quote.latest_price}) %></td>
+</tr>

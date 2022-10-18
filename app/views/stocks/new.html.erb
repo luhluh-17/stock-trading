@@ -1,0 +1,7 @@
+<% if current_user.balance > params[:stock][:latest].to_f %>
+  <h1>Order Purchase for <%= params[:stock][:symbol] %></h1>
+  <h1>Price per amount <%= params[:stock][:latest] %> </h1>
+  <%= render 'form', stock: @stock %>
+<% else %>
+  <h1>Sorry You don't have enough balance to purchase this stock</h1>
+<% end %>
