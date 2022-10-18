@@ -15,7 +15,15 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user_id = current_user.id
 
-    redirect_to @product, notice: "#{@product.ticker} has been added to the Marketplace" if @product.save
+    if @product.save
+      stock = current_user.stocks.find_by(symbol: @product.symbol)
+      new_amount = (stock.amount - @product.amount).round(2)
+      stock.update(amount: new_amount)
+
+      redirect_to portfolio_path, notice: "#{@product.symbol} has been added to the Marketplace"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit; end
@@ -41,6 +49,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:ticker, :amount, :percentage)
+    params.require(:product).permit(:symbol, :amount, :percentage)
   end
 end

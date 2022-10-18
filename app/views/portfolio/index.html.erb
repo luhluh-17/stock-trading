@@ -18,11 +18,11 @@
         <td><img class="stock-logo" src=<%= logo %>></td>
         <td> <%= stock.symbol %></td>
         <td><%= quote.company_name %></td>
-        <td><%= stock.amount %></td>
+        <td><%= stock.amount.round(2) %></td>
         <td><%= number_to_currency(quote.latest_price) %></td>
         <td><%= number_to_percentage(quote.change_percent) %></td>
         <td><%= "≈ #{number_to_currency(est_price)}" %></td>
-        <td><button>Sell</button></td>
+        <td><%= link_to 'Sell', new_product_path(:product => { symbol: stock.symbol, amount: stock.amount, latest: quote.latest_price}) %></td>
       </tr>
     <% end %>
   </table>
