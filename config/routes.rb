@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get 'profile', to: 'profile#index'
   get 'profile/deposit', to: 'profile#deposit'
 
-  resources :stocks
-  resources :products
-  resources :transactions
+  resources :stocks, only: %i[index create new]
+  resources :products, only: %i[index create new]
+  resources :transactions, only: %i[index create new]
 end
