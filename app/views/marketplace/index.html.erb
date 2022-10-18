@@ -17,10 +17,10 @@
         <td><img class="stock-logo" src=<%= logo %>></td>
         <td><%= product.symbol %></td>
         <td><%= quote.company_name %></td>
-        <td> <%= number_to_currency(sell_price) %></td>
+        <td><%= number_to_currency(sell_price) %></td>
         <td><%= product.amount %></td>
-        <td> <%= product.user.full_name %></td>
-        <td><button>Buy</button></td>
+        <td><%= product.user.full_name %></td>
+        <td><%= link_to 'Buy', new_transaction_path(:product => { product_id: product.id, symbol: product.symbol, price: sell_price, amount: product.amount }) %></td>
       </tr>
     <% end %>
   </table>

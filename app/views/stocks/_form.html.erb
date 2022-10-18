@@ -1,4 +1,13 @@
 <%= form_with(model: stock) do |form| %>
+  <% if stock.errors.any? %>
+    <div style="color: red">
+      <ul>
+        <% stock.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <% max = max_available(current_user.balance, params[:stock][:latest]) %>
   <div>
     <%= form.hidden_field :symbol, value: params[:stock][:symbol] %>

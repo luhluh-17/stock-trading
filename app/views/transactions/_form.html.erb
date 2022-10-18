@@ -1,0 +1,24 @@
+<%= form_with(model: transaction) do |form| %>
+  <% if transaction.errors.any? %>
+    <div style="color: red">
+      <ul>
+        <% transaction.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.hidden_field :product_id, value: product_id %>
+  </div>
+  <div>
+    <%= form.label :amount %><br>
+    <%= form.number_field :amount, value: 1, step: 0.1, max: available_amount %>
+  </div>
+  <div>
+    <%= form.hidden_field :price, value: price %>
+  </div>
+  <div>
+    <%= form.submit "Buy" %>
+  </div>
+<% end %>
