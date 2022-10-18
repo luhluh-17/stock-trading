@@ -1,13 +1,15 @@
-<h1>All Users:</h1>
-<br/>
-<% @users.where(:role => 0).each do |user| %>
-  <strong>Name:</strong> <%= user.first_name %> <%= user.last_name %><br/>
-  <strong>Email:</strong> <%= user.email %><br/>
-  <strong>Status:</strong> <%= user.status %><br/><br/>
-<% end %>
-
-
 <section id="all-users">
+  <div>
+    <div>
+      <p><%= user_greeting(current_user) %></p>
+      <p>All Users:</p>
+    </div>
+
+    <div>
+      <button>Add User</button>
+    </div>
+  </div>
+
   <table class="table table is-striped table is-hoverable table is-fullwidth">
     <tr>
       <th>Name</th>
@@ -19,7 +21,7 @@
       <tr>
         <td><%= user.first_name %> <%= user.last_name %></td>
         <td><%= user.email %></td>
-        <td><%= user.status %></td>
+        <td><%= user.status.upcase_first %></td>
         <td><button>Edit</button></td>
       </tr>
     <% end %>
