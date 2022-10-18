@@ -30,7 +30,7 @@ class StocksController < ApplicationController
     else
       new_amount = (stock.amount + params[:stock][:amount].to_f).round(2)
       stock.update(amount: new_amount)
-      redirect_to portfolio_path, notice: "#{new_amount} has been added to your #{stock.symbol} portfolio"
+      redirect_to portfolio_path, notice: "You have added #{new_amount} worth of #{stock.symbol} stock to portfolio"
     end
   end
 
