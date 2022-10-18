@@ -9,14 +9,18 @@ class StocksController < ApplicationController
 
   def new
     @stock = Stock.new
+    @balance = current_user.balance
   end
 
+  # TODO: Fixed Warning
   def create
     @stock = Stock.new(stock_params)
     @stock.user_id = current_user.id
 
     if @stock.save
-      redirect_to @stock, notice: "#{@stock.ticker} has been added to your portfolio"
+      redirect_to portfolio_path, notice: "#{@stock.symbol} has been added to your portfolio"
+      new_balance = current_user.balance - (params[:stock][:latest].to_f * @stock.amount)
+      current_user.update(balance: new_balance)
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +30,7 @@ class StocksController < ApplicationController
 
   def update
     if @stock.update(stock_params)
-      redirect_to @stock, notice: "#{@stock.ticker} has been updated"
+      redirect_to @stock, notice: "#{@stock.symbol} has been updated"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,6 +49,6 @@ class StocksController < ApplicationController
   end
 
   def stock_params
-    params.require(:stock).permit(:ticker, :amount)
+    params.require(:stock).permit(:symbol, :amount)
   end
 end
