@@ -5,3 +5,23 @@
   <strong>Email:</strong> <%= user.email %><br/>
   <strong>Status:</strong> <%= user.status %><br/><br/>
 <% end %>
+
+
+<section id="all-users">
+  <table class="table table is-striped table is-hoverable table is-fullwidth">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+    <% @users.where(:role => 0).each do |user| %>
+      <tr>
+        <td><%= user.first_name %> <%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.status %></td>
+        <td><button>Edit</button></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
