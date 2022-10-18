@@ -1,0 +1,20 @@
+<%= render "shared/user_profile_cover" %>
+<% logo = @client.logo(@quote.symbol).url %>
+<table class="table table is-striped table is-hoverable table is-fullwidth">
+  <tr>
+    <th>Logo</th>
+    <th>Symbol</th>
+    <th>Company</th>
+    <th>Price</th>
+    <th>24H Change</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><img class="stock-logo" src=<%= logo %>></td>
+    <td><%= @quote.symbol %></td>
+    <td><%= @quote.company_name %></td>
+    <td><%= number_to_currency(@quote.latest_price)  %></td>
+    <td><%= number_to_percentage(@quote.change_percent) %></td>
+    <td><%= link_to 'Buy', new_stock_path(:stock => { symbol: @quote.symbol, latest: @quote.latest_price}) %></td>
+  </tr>
+</table>

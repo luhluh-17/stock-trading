@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get 'portfolio', to: 'portfolio#index'
   get 'profile', to: 'profile#index'
   get 'profile/deposit', to: 'profile#deposit'
+  get 'iex/stock', to: 'iex#stock'
 
   resources :stocks, only: %i[index create new]
   resources :products, only: %i[index create new]
