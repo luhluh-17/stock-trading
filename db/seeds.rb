@@ -19,6 +19,46 @@
 #   status: 'verified'
 # )
 
+user1 = User.new(
+  email: 'user1@test.com',
+  password: 'password',
+  password_confirmation: 'password',
+  balance: 5000,
+  first_name: 'John',
+  last_name: 'Doe',
+  status: 'verified'
+)
+
+user1.skip_confirmation!
+user1.save!
+
+user2 = User.new(
+  email: 'user2@test.com',
+  password: 'password',
+  password_confirmation: 'password',
+  balance: 5672.23,
+  first_name: 'Mary',
+  last_name: 'Jane',
+  status: 'verified'
+)
+
+user2.skip_confirmation!
+user2.save!
+
+user3 = User.new(
+  email: 'admin@test.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: 1,
+  balance: 100_000,
+  first_name: 'Steph',
+  last_name: 'Edison',
+  status: 'verified'
+)
+
+user3.skip_confirmation!
+user3.save!
+
 Product.create(symbol: 'SGML', amount: 1000, percentage: 20, user_id: User.first.id)
 Product.create(symbol: 'STNG', amount: 1000, percentage: 20, user_id: User.first.id)
 Product.create(symbol: 'TRMD', amount: 1000, percentage: 20, user_id: User.first.id)
@@ -63,4 +103,3 @@ Transaction.create(user_id: User.second.id, product_id: Product.third.id, price:
 Stock.create(symbol: 'SGML', amount: 1000, user_id: User.second.id)
 Stock.create(symbol: 'MTR', amount: 1000, user_id: User.second.id)
 Stock.create(symbol: 'AAPL', amount: 1000, user_id: User.second.id)
-
