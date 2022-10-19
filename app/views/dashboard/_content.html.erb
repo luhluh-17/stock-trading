@@ -29,7 +29,9 @@
         <td><%= model.symbol %></td>
         <td><%= model.company_name %></td>
         <td><%= number_to_currency(model.latest_price)  %></td>
-        <td><%= number_to_percentage(model.change_percent) %></td>
+        <td class=<%= get_change_style(model.change_percent) %>>
+          <%= number_to_percentage(model.change_percent) %>
+        </td>
         <td><%= link_to 'Buy', new_stock_path(:stock => { symbol: model.symbol, latest: model.latest_price}), class: "button is-primary" %></td>
       </tr>
     <% end %>
