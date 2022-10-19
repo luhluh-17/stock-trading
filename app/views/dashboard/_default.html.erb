@@ -7,5 +7,5 @@
   <td><%= quote.company_name %></td>
   <td><%= number_to_currency(quote.latest_price)  %></td>
   <td><%= number_to_percentage(quote.change_percent) %></td>
-  <td><%= link_to 'Buy', new_stock_path(:stock => { symbol: default_data, latest: quote.latest_price}) %></td>
+  <td><%= link_to 'Buy', new_stock_path(:stock => { symbol: default_data, latest: quote.latest_price}), class: "button is-primary" %></td>
 </tr>
