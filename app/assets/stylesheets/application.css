@@ -41,7 +41,7 @@
   --white: #fff;
   --red-light: #f8d7da;
   --red-dark: #842029;
-  --green-light: #d1e7dd;
+  --green-light: #0c9984;
   --green-dark: #0f5132;
 
   --dashboard-user-bg: #0b0e11;
@@ -99,4 +99,20 @@
 
 .stock-logo {
   width: 2rem;
+}
+
+.price-change-red {
+  color: var(--red-dark);
+}
+
+.price-change-green {
+  color: var(--green-light);
+}
+
+.alert-custom {
+  width: 25vw;
+  position: fixed;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
 }
