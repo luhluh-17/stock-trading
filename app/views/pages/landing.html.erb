@@ -1,16 +1,14 @@
-<h2>landing page</h2>
-
-<br/>
-
 <% if current_user %>
     <p>Hello, <%= current_user.first_name %>!</p>
     <p>This is a placeholder to signify that you have logged in.</p>
     <p>You are a <%= current_user.role %></p>
 
     <% if current_user.admin? %>
-        There are now <%= User.count - 1 %> users who have signed up and are waiting your approval.
+        There are now <%= User.all.where(:role => 0, :status => "pending") %> users who have signed up and are waiting your approval.
     <% end %>
 
 <% else %>
-    <p>This is a placeholder to signify that you are not logged in.</p>
+<figure class="image">
+  <img src="https://i.ibb.co/r08vz1Y/Fa-CIhz-OVEAA5-QUh.png">
+</figure>
 <% end %>

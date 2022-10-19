@@ -4,11 +4,13 @@
 <% product_id = params[:product][:product_id] %>
 <% max = max_available(current_user.balance, price) %>
 <% available_amount = amount.to_f < max ? amount.to_f : max  %>
+
 <% if current_user.balance > price %>
-  <h1>Order Purchase for <%= symbol %></h1>
-  <h1>Price per amount <%= price %> </h1>
-  <h1>Available amount <%= available_amount %> </h1>
+  <h1 class="is-size-4 mb-2">Order Purchase for <%= symbol %></h1>
   <%= render 'form', transaction: @transaction, symbol: symbol, price: price, available_amount: available_amount, product_id: product_id %>
+
 <% else %>
-  <h1>Sorry You don't have enough balance to purchase this stock</h1>
+    <div class="notification is-warning is-light">
+      <h1>Sorry, you don't have enough balance to purchase this stock.</h1>
+    </div>
 <% end %>
