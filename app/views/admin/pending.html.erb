@@ -4,20 +4,13 @@
         <% @users.each do |user| %>
             <div>
                 <div>
-                <span><%= user.first_name %> <%= user.last_name %></span>
+                <span><%= user.full_name %></span>
                 <p><%= user.email %></p>
                 </div>
 
                 <% User::STATUSES.drop(1).each do |status| %>
                     <%= button_to status, update_status_admin_path(user, status: status), method: :patch %>
                 <% end %>
-                <%# <div class="icon-text"> %>
-                    <%# <%= link_to change_status_admin_path(user), data: { 'turbo-method': :patch } do %>
-                        <%# <span class="icon"> %>
-                            <%# <ion-icon name="checkmark-outline"></ion-icon> %>
-                        <%# </span> %>
-                    <%# <% end %>
-                <%# </div> %>
             </div>
         <% end %>
     </div>
