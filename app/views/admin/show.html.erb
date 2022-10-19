@@ -1,20 +1,36 @@
-<div>
-  <div>
-    <h1>
-      <%= @user.full_name %> 
-    </h1>
-  </div>
-  <p>
-    Email: <%= @user.email %>
-  </p>
-  <p>
-    Status: <%= @user.status %>
-  </p>
-  <p>
-    Balance: <%= number_to_currency(@user.balance) %>
-  </p>
-  <br/>
-  <%= link_to 'Edit', edit_admin_path(@user) %> 
-  <%= link_to 'Back', userlist_path %>
+  <p class="is-size-4 mb-1">User Details:</p>
 
-</div>
+
+  <section class="dashboard-head-cover mb-1">
+    <div class="dashboard-user-container">
+      <div class="avatar avatar-1"></div>
+      <div class="dashboard-user-info">
+        <p class="dashboard-subtitle"> <%= @user.email %> </p>
+        <p>
+          <span class="dashboard-title"> <%= @user.full_name %></span>
+          <span class="dashboard-verified">
+            <%= display_access_level(@user.status) %>
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="dashboard-user-container">
+      <div class="dashboard-user-info">
+        <p>
+          <span class="dashboard-subtitle">Estimated Balance</span>
+        </p>
+        <p class="dashboard-title">
+          <%= "≈ #{number_to_currency(@user.balance)}" %>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="is-flex is-justify-content-flex-end">
+    <%= link_to 'Edit', edit_admin_path(@user), class: "button is-primary" %> 
+    <%= link_to "Delete", admin_path(@user), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  }, class: "button is-danger mx-1" %>
+    <%= link_to 'Back', userlist_path, class: "button is-primary" %>
+  </section>
