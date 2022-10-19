@@ -1,26 +1,35 @@
-<%= form_with(model: product) do |form| %>
-  <% if product.errors.any? %>
-    <div style="color: red">
-      <ul>
-        <% product.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div class="notification is-light">
+
+  <%= form_with(model: product) do |form| %>
+    <% if product.errors.any? %>
+      <div style="color: red">
+        <ul>
+          <% product.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% max = params[:product][:amount] %>
+    <div class="field">
+      <%= form.hidden_field :symbol, value: params[:product][:symbol] %>
+    </div>
+    <div class="field">
+      <%= form.label :amount, class: "label" %>
+      <div class="control">
+        <%= form.number_field :amount, value: 1, step: 0.1, min: 1, max: max, class: "input"  %>
+      </div>
+      <h1 class="help">Price per amount: <%= number_to_currency(params[:product][:latest]) %></h1>
+    </div>
+    <div class="field">
+      <%= form.label :percentage, class: "label" %>
+      <div class="control">
+        <%= form.number_field :percentage, value: 1, min: 1, max: 30, class: "input"  %>
+      </div>
+    </div>
+    <div class="control">
+      <%= form.submit "Sell to Marketplace", class: "button is-primary" %>
     </div>
   <% end %>
-  <% max = params[:product][:amount] %>
-  <div>
-    <%= form.hidden_field :symbol, value: params[:product][:symbol] %>
-  </div>
-  <div>
-    <%= form.label :amount %><br>
-    <%= form.number_field :amount, value: 1, step: 0.1, min: 1, max: max %>
-  </div>
-  <div>
-    <%= form.label :percentage %><br>
-    <%= form.number_field :percentage, value: 1, min: 1, max: 30 %>
-  </div>
-  <div>
-    <%= form.submit "Sell to Marketplace" %>
-  </div>
-<% end %>
+</div>
