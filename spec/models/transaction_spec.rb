@@ -12,10 +12,12 @@ RSpec.describe Transaction, type: :model do
       unconfirmed_email: nil,
       status: 'verified'
     )
-    # @user.save
+
+    @user.skip_confirmation!
+    @user.save!
 
     @prod = Product.new(symbol: 'AMD', amount: 23.4, percentage: 10, user_id: @user.id)
-    # @prod.save
+    @prod.save
 
     @trx = Transaction.new(user_id: @user.id, product_id: @prod.id, price: 1000, amount: 23.1)
   end
@@ -28,11 +30,13 @@ RSpec.describe Transaction, type: :model do
   end
 
   context 'Invalidation Test' do
-    it 'Has no user' do
+    it 'User must exist' do
+      @trx.user_id = nil
       @trx.valid?
       expect(@trx.errors.messages[:user]).not_to be_empty
     end
-    it 'Has no product' do
+    it 'Product must exist' do
+      @trx.product_id = nil
       @trx.valid?
       expect(@trx.errors.messages[:product]).not_to be_empty
     end

@@ -13,7 +13,8 @@ RSpec.describe Product, type: :model do
       status: 'verified'
     )
 
-    # @user.save
+    @user.skip_confirmation!
+    @user.save!
 
     @prod = Product.new(symbol: 'AMD', amount: 23.4, percentage: 10, user_id: @user.id)
   end
@@ -26,11 +27,12 @@ RSpec.describe Product, type: :model do
   end
 
   context 'Invalidation Test' do
-    it 'Has no user' do
+    it 'User must exist' do
+      @prod.user_id = nil
       @prod.valid?
       expect(@prod.errors.messages[:user]).not_to be_empty
     end
-    it 'Empty Symbol' do
+    it "Symbol can't be blank" do
       @prod.symbol = nil
       @prod.valid?
       expect(@prod.errors.messages[:symbol]).not_to be_empty
