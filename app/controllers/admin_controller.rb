@@ -15,6 +15,10 @@ class AdminController < ApplicationController
     @users = User.all.where(:role => 0, :status => "verified")
   end
 
+  def rejected
+    @users = User.all.where(:role => 0, :status => "rejected")
+  end
+
   # show user details
   def show
     @user = User.find(params[:id])
@@ -52,7 +56,7 @@ class AdminController < ApplicationController
 
   # delete user
   def destroy
-    @user = Article.find(params[:id])
+    @user = User.find(params[:id])
     @user.destroy
 
     redirect_to userlist_path, notice: 'User successfully deleted.', status: :see_other
