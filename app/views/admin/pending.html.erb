@@ -1,4 +1,4 @@
-<h3>Pending Users</h3>
+<p class="is-size-4">Pending Users</p>
 <% if @users.any? %>
     <div>
         <% @users.each do |user| %>
@@ -15,7 +15,7 @@
         <% end %>
     </div>
 <% else %>
-    <div>
+    <div class="notification is-warning is-light">
         <p>You're all caught up. No pending users.</p>
     </div>
 <% end %>

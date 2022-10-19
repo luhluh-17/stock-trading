@@ -1,8 +1,7 @@
 <section id="all-users">
   <div class="is-flex is-flex-direction-row is-justify-content-space-between">
     <div class="is-flex is-flex-direction-column">
-      <p class="is-size-5"><%= user_greeting(current_user) %></p>
-      <p>All Users:</p>
+      <p class="is-size-4"><%= user_greeting(current_user) %></p>
     </div>
 
     <div class="is-flex is-flex-direction-column is-justify-content-flex-end">
@@ -25,11 +24,16 @@
         <td><%= number_to_currency(user.balance) %></td>
         <td><%= user.status.upcase_first %></td>
         <td class="is-flex is-justify-content-flex-end">
-          <%=link_to "Edit", edit_path(user.id), class: "button is-primary" %>
+          <% if user.status == 'verified' %>
+            <%= button_to "Reject", update_status_admin_path(user, status: "rejected"), method: :patch, class: "button is-warning" %>
+          <% elsif user.status == 'rejected' %>
+            <%= button_to "Verify", update_status_admin_path(user, status: "verified"), method: :patch, class: "button is-primary" %>
+          <% end %>
+          <%=link_to "Edit", edit_path(user.id), class: "button is-primary mx-2" %>
           <%= link_to "Delete", admin_path(user), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  }, class: "button is-danger ml-2" %>
+                  }, class: "button is-danger" %>
         </td>
       </tr>
     <% end %>
