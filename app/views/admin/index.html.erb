@@ -26,8 +26,6 @@
         <td class="is-flex is-justify-content-flex-end">
           <% if user.status == 'verified' %>
             <%= button_to "Reject", update_status_admin_path(user, status: "rejected"), method: :patch, class: "button is-warning" %>
-          <% elsif user.status == 'rejected' %>
-            <%= button_to "Verify", update_status_admin_path(user, status: "verified"), method: :patch, class: "button is-primary" %>
           <% end %>
           <%=link_to "Edit", edit_path(user.id), class: "button is-primary mx-2" %>
           <%= link_to "Delete", admin_path(user), data: {

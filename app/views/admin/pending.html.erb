@@ -1,19 +1,24 @@
 <p class="is-size-4">Pending Users</p>
 <% if @users.any? %>
-    <div>
-        <% @users.each do |user| %>
-            <div>
-                <div>
-                <span><%= user.full_name %></span>
-                <p><%= user.email %></p>
-                </div>
-
-                <% User::STATUSES.drop(1).each do |status| %>
-                    <%= button_to status, update_status_admin_path(user, status: status), method: :patch %>
-                <% end %>
-            </div>
+    <table class="table is-striped is-hoverable is-fullwidth">
+        <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th></th>
+        </tr>
+        <% @users.where(:role => 0).each do |user| %>
+        <tr>
+            <td><%=link_to user.full_name, show_path(user.id) %></td>
+            <td><%= user.email %></td>
+            <td><%= user.status.upcase_first %></td>
+            <td class="is-flex is-justify-content-flex-end">
+                <%= button_to "Verify", update_status_admin_path(user, status: "verified"), method: :patch, class: "button is-primary" %>
+                <%= button_to "Reject", update_status_admin_path(user, status: "rejected"), method: :patch, class: "button is-warning ml-2" %>
+            </td>
+        </tr>
         <% end %>
-    </div>
+    </table>
 <% else %>
     <div class="notification is-warning is-light">
         <p>You're all caught up. No pending users.</p>
