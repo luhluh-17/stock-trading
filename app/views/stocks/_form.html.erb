@@ -1,25 +1,33 @@
-<%= form_with(model: stock) do |form| %>
-  <% if stock.errors.any? %>
-    <div style="color: red">
-      <ul>
-        <% stock.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div class="notification is-light">
+
+  <%= form_with(model: stock) do |form| %>
+    <% if stock.errors.any? %>
+      <div style="color: red">
+        <ul>
+          <% stock.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% max = max_available(current_user.balance, params[:stock][:latest]) %>
+    <div class="field">
+      <%= form.hidden_field :symbol, value: params[:stock][:symbol] %>
+    </div>
+    <div class="field">
+      <%= form.label :amount, class: "label" %>
+      <div class="control">
+        <%= form.number_field :amount, value: 1, step: 0.1, min: 1, max: max, class: "input" %>
+      </div>
+      <h1 class="help">Price per amount: <%= number_to_currency(params[:stock][:latest]) %></h1>
+    </div>
+    <div class="field">
+      <%= form.hidden_field :latest, value: params[:stock][:latest] %>
+    </div>
+    <div class="control">
+      <%= form.submit "Buy", class: "button is-primary" %>
     </div>
   <% end %>
-  <% max = max_available(current_user.balance, params[:stock][:latest]) %>
-  <div>
-    <%= form.hidden_field :symbol, value: params[:stock][:symbol] %>
-  </div>
-  <div>
-    <%= form.label :amount %><br>
-    <%= form.number_field :amount, value: 1, step: 0.1, min: 1, max: max %>
-  </div>
-  <div>
-    <%= form.hidden_field :latest, value: params[:stock][:latest] %>
-  </div>
-  <div>
-    <%= form.submit "Buy" %>
-  </div>
-<% end %>
+
+</div>

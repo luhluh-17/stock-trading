@@ -1,24 +1,31 @@
-<%= form_with(model: transaction) do |form| %>
-  <% if transaction.errors.any? %>
-    <div style="color: red">
-      <ul>
-        <% transaction.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div class="notification is-light">
+  <%= form_with(model: transaction) do |form| %>
+    <% if transaction.errors.any? %>
+      <div style="color: red">
+        <ul>
+          <% transaction.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.hidden_field :product_id, value: product_id %>
+    </div>
+    <div class="field">
+      <%= form.label :amount, class: "label" %>
+      <div class="control">
+        <%= form.number_field :amount, value: 1, step: 0.1, max: available_amount, class: "input" %>
+      </div>
+      <h1 class="help">Price per amount: <%= number_to_currency(price) %></h1>
+      <h1 class="help">Available amount: <%= available_amount %></h1>
+    </div>
+    <div class="field">
+      <%= form.hidden_field :price, value: price %>
+    </div>
+    <div class="control">
+      <%= form.submit "Buy", class: "button is-primary" %>
     </div>
   <% end %>
-  <div>
-    <%= form.hidden_field :product_id, value: product_id %>
-  </div>
-  <div>
-    <%= form.label :amount %><br>
-    <%= form.number_field :amount, value: 1, step: 0.1, max: available_amount %>
-  </div>
-  <div>
-    <%= form.hidden_field :price, value: price %>
-  </div>
-  <div>
-    <%= form.submit "Buy" %>
-  </div>
-<% end %>
+</div>

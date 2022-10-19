@@ -21,7 +21,7 @@
         <td><%= product.amount %></td>
         <td><%= product.user.full_name %></td>
         <% unless current_user.id == product.user_id %>
-          <td><%= link_to 'Buy', new_transaction_path(:product => { product_id: product.id, symbol: product.symbol, price: sell_price, amount: product.amount }) %></td>
+          <td><%= link_to 'Buy', new_transaction_path(:product => { product_id: product.id, symbol: product.symbol, price: sell_price, amount: product.amount }), class: "button is-primary" %></td>
         <% else %>
           <td></td>
         <% end %>
