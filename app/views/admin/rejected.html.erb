@@ -1,0 +1,30 @@
+<p class="is-size-4 mb-2">Rejected Users</p>
+
+<% if @users.any? %>
+    <table class="table is-striped is-hoverable is-fullwidth">
+        <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th></th>
+        </tr>
+        <% @users.where(:role => 0).each do |user| %>
+        <tr>
+            <td><%=link_to user.full_name, show_path(user.id) %></td>
+            <td><%= user.email %></td>
+            <td><%= user.status.upcase_first %></td>
+            <td class="is-flex is-justify-content-flex-end">
+                <%= button_to "Verify", update_status_admin_path(user, status: "verified"), method: :patch, class: "button is-primary" %>
+                <%= link_to "Delete", admin_path(user), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  }, class: "button is-danger ml-2" %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+<% else %>
+    <div class="notification is-warning is-light">
+        <p>You're all caught up. No rejected users.</p>
+    </div>
+<% end %>

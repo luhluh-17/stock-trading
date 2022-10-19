@@ -15,6 +15,10 @@ class AdminController < ApplicationController
     @users = User.all.where(:role => 0, :status => "verified")
   end
 
+  def rejected
+    @users = User.all.where(:role => 0, :status => "rejected")
+  end
+
   # show user details
   def show
     @user = User.find(params[:id])

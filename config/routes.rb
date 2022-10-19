@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   get '/pending' => 'admin#pending', as: :pending
+  get '/rejected' => 'admin#rejected', as: :rejected
   get '/userlist' => 'admin#index', as: :userlist
   get '/userlist/:id' => 'admin#show', as: :show
   get '/userlist/:id/edit' => 'admin#edit', as: :edit
