@@ -13,26 +13,34 @@ RSpec.describe Stock, type: :model do
       status: 'verified'
     )
 
-    # @user.save
+    @user.skip_confirmation!
+    @user.save!
 
     @stock = Stock.new(symbol: 'AMD', amount: 23.4, user_id: @user.id)
   end
 
   context 'Validation Test' do
-    it 'Saves Stock' do
+    it 'Save Stock' do
       @stock.valid?
       expect(@stock.valid?).to eq(true)
     end
   end
+
   context 'Invalidation Test' do
-    it 'Has no user' do
+    it 'User must exist' do
+      @stock.user_id = nil
       @stock.valid?
       expect(@stock.errors.messages[:user]).not_to be_empty
     end
-    it 'Empty Symbol' do
+    it "Symbol can't be blank" do
       @stock.symbol = nil
       @stock.valid?
       expect(@stock.errors.messages[:symbol]).not_to be_empty
+    end
+    it 'Amount must be numerical' do
+      @stock.amount = 'Amount'
+      @stock.valid?
+      expect([@stock.errors[:amount]]).not_to be_empty
     end
     it 'Amount must be greater than 0' do
       @stock.amount = -123
