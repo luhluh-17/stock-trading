@@ -52,7 +52,7 @@ class AdminController < ApplicationController
 
   # delete user
   def destroy
-    @user = Article.find(params[:id])
+    @user = User.find(params[:id])
     @user.destroy
 
     redirect_to userlist_path, notice: 'User successfully deleted.', status: :see_other

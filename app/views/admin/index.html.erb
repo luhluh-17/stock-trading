@@ -1,19 +1,20 @@
 <section id="all-users">
-  <div>
-    <div>
-      <p><%= user_greeting(current_user) %></p>
+  <div class="is-flex is-flex-direction-row is-justify-content-space-between">
+    <div class="is-flex is-flex-direction-column">
+      <p class="is-size-5"><%= user_greeting(current_user) %></p>
       <p>All Users:</p>
     </div>
 
-    <div>
-      <%= link_to "Add User", new_path %>
+    <div class="is-flex is-flex-direction-column is-justify-content-flex-end">
+      <%= link_to "Add User", new_path, class: "button is-primary" %>
     </div>
   </div>
 
-  <table class="table table is-striped table is-hoverable table is-fullwidth">
+  <table class="table is-striped is-hoverable is-fullwidth">
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <th>Balance</th>
       <th>Status</th>
       <th></th>
     </tr>
@@ -21,8 +22,15 @@
       <tr>
         <td><%=link_to user.full_name, show_path(user.id) %></td>
         <td><%= user.email %></td>
+        <td><%= user.balance %></td>
         <td><%= user.status.upcase_first %></td>
-        <td><%=link_to "Edit", edit_path(user.id) %></td>
+        <td class="is-flex is-justify-content-flex-end">
+          <%=link_to "Edit", edit_path(user.id), class: "button is-primary" %>
+          <%= link_to "Delete", admin_path(user), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  }, class: "button is-danger ml-2" %>
+        </td>
       </tr>
     <% end %>
   </table>
