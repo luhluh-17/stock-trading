@@ -10,6 +10,10 @@ http://desolate-ravine-43594.herokuapp.com/
 |  User1   | `user1@test.com` / password |
 |  User2   | `user2@test.com` / password |
 
+### Features
+
+- Login / Sign up via Devise with Google Authentication
+
 # README
 
 This README would normally document whatever steps are necessary to get the
