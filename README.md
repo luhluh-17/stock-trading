@@ -1,3 +1,15 @@
+### 🚀 Live Demo
+
+http://desolate-ravine-43594.herokuapp.com/
+
+#### Dummy Accounts
+
+| Accounts |      Email & Password       |
+| :------: | :-------------------------: |
+|  Admin   | `admin@test.com` / password |
+|  User1   | `user1@test.com` / password |
+|  User2   | `user2@test.com` / password |
+
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -5,20 +17,20 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+- Ruby version
 
-* System dependencies
+- System dependencies
 
-* Configuration
+- Configuration
 
-* Database creation
+- Database creation
 
-* Database initialization
+- Database initialization
 
-* How to run the test suite
+- How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+- Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+- Deployment instructions
 
-* ...
+- ...
