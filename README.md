@@ -1,6 +1,15 @@
 # Stokd
 A rails 7 application to simulate buy and sell stock
 
+### 🚀 Live Demo
+http://desolate-ravine-43594.herokuapp.com/
+#### Dummy Accounts
+Accounts    | Email & Password
+:---------: | :-------------------------------:
+Admin       | `admin@test.com` / password
+User1       | `user1@test.com` / password
+User2       | `user2@test.com` / password
+
 ### 💻 Features:
 #### General
 * Register and Login account using Devise gem
@@ -15,7 +24,6 @@ A rails 7 application to simulate buy and sell stock
 * Buy and Sell stocks in Marketplace
 * Update Buyer and Seller balance after each transaction
 * Display transactions made by the user
-
 
 ### 👨🏽‍💻 Tech Stacks
 
