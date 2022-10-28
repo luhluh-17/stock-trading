@@ -17,7 +17,7 @@ A Ruby on Rails 7 application to simulate buying and selling stocks
 * Display transactions made by the user
 
 ### 🚀 Live Demo
-http://desolate-ravine-43594.herokuapp.com/
+https://stock-trading.herokuapp.com/
 
 #### Dummy Accounts
 Accounts    | Email & Password
