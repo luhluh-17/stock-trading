@@ -8,15 +8,15 @@ class AdminController < ApplicationController
   end
 
   def pending
-    @users = User.all.where(:role => 0, :status => "pending")
+    @users = User.all.where(role: 0, status: 'pending')
   end
 
   def verified
-    @users = User.all.where(:role => 0, :status => "verified")
+    @users = User.all.where(role: 0, status: 'verified')
   end
 
   def rejected
-    @users = User.all.where(:role => 0, :status => "rejected")
+    @users = User.all.where(role: 0, status: 'rejected')
   end
 
   # show user details
@@ -33,7 +33,7 @@ class AdminController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to userlist_path, notice: 'User successfully created.' 
+      redirect_to userlist_path, notice: 'User successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -48,7 +48,7 @@ class AdminController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to userlist_path, notice: 'User details successfully updated.' 
+      redirect_to userlist_path, notice: 'User details successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -72,10 +72,10 @@ class AdminController < ApplicationController
   private
 
   def restrict_action
-    redirect_to root_path unless current_user.admin? 
+    redirect_to root_path unless current_user.admin?
   end
 
   def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :status, :balance)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :status, :balance)
   end
 end
