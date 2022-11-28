@@ -1,5 +1,5 @@
 # Stokd
-A Ruby on Rails 7 application to simulate buying and selling stocks
+A Ruby on Rails 7 application that simulates purchasing and selling stocks
 
 ### 💻 Features:
 #### General
@@ -17,7 +17,7 @@ A Ruby on Rails 7 application to simulate buying and selling stocks
 * Display transactions made by the user
 
 ### 🚀 Live Demo
-https://stock-trading.herokuapp.com/
+https://rails-stock-trading.fly.dev/
 
 #### Dummy Accounts
 Accounts    | Email & Password
@@ -50,8 +50,8 @@ Back-end    | [![ruby](https://upload.wikimedia.org/wikipedia/commons/thumb/7/73
 </a>
 
 <!-- Links -->
-[1]: https://commons.wikimedia.org/wiki/File:HTML5_Badge.svg
-[2]: https://commons.wikimedia.org/wiki/File:CSS3_logo.svg
-[3]: https://commons.wikimedia.org/wiki/File:Ruby_logo.svg
-[4]: https://commons.wikimedia.org/wiki/File:Ruby_On_Rails_Logo.svg
-[5]: https://commons.wikimedia.org/wiki/File:Postgresql_elephant.svg
+[1]: https://developer.mozilla.org/en-US/docs/Glossary/HTML5
+[2]: https://developer.mozilla.org/en-US/docs/Web/CSS
+[3]: https://www.ruby-lang.org/en/
+[4]: https://rubyonrails.org/
+[5]: https://www.postgresql.org/
