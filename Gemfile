@@ -75,3 +75,5 @@ end
 
 gem "devise", "~> 4.8"
 gem "iex-ruby-client"
+
+gem "dockerfile-rails", ">= 1.2", :group => :development
