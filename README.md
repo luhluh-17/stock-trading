@@ -1,6 +1,22 @@
 # Stokd
 A Ruby on Rails 7 application that simulates purchasing and selling stocks
 
+### ⚙ Setup 
+To run the project locally
+1. Clone the repository
+2. Create an environment file ".env" in the root folder
+3. Set values to the following variables. example syntax: "USERNAME = 'User1'"
+    1. USER_NAME (Email address of the account use to send confirmation emails to newly created accounts)
+    2. PASSWORD (Password of the account use to send confirmation emails to newly created accounts)
+    3. SECRET (Secret key obtain from IEX API)
+    4. PUBLISHABLE (Publishable key obtain from IEX API)
+    5. ENDPOINT (IEX API Link - https://cloud.iexapis.com/v1)
+4. Navigate to folder
+4. Create Postgresql database using command "rails db:create"
+5. Run migrations using command "rails db:migrate"
+6. [OPTIONAL] Populate database using command "rails db:seed"
+7. Run Rails Server using "rails s"
+
 ### 💻 Features:
 #### General
 * Register and Login account using Devise gem
